@@ -5,10 +5,11 @@ if !exists("g:ag_command")
 endif
 
 function! silver#Sup(cmd, args)
+  redraw
 
   if empty(a:args)
     " open last search buffer
-    split _ag_output_
+    split agresult
     nnoremap <buffer> <silent> q :q<cr>
     setlocal filetype=agresult
     setlocal buftype=nofile
@@ -24,11 +25,11 @@ function! silver#Sup(cmd, args)
     end
 
     " if already open, use that window
-    let winnr = bufwinnr("_ag_output_")
+    let winnr = bufwinnr("agresult")
     if ( winnr >= 0 )
       execute winnr . "wincmd w"
     else
-      split _ag_output_
+      split agresult
     endif
 
     nnoremap <buffer> <silent> q :q<cr>
@@ -43,14 +44,21 @@ function! silver#Sup(cmd, args)
       let filename = split(line, ':')[0]
       let text = join(split(line, ':')[1:] ,":")
       if currentFile != filename
+        call append(line('$'), '')
         call append(line('$'), filename)
         let currentFile = filename
       endif
       call append(line('$'), text)
     endfor
-  end
 
-  let @/ = l:grepargs
+    let winnr = bufwinnr("agresult")
+    execute winnr . "wincmd w"
+    let @/=a:args
+    set hlsearch
+    set syntax=silver
+    redraw!
+
+  endif
 
 endfunction
 
