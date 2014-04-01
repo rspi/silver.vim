@@ -4,6 +4,14 @@ if !exists("g:ag_command")
   let g:ag_command = "ag"
 endif
 
+function! silver#OpenFile()
+  normal! 0"ayt:{j"by$
+  normal q
+  echom type(@a)
+  execute ':e +' . @a . ' ' . @b
+  return
+endfunction
+
 function! silver#Sup(cmd, args)
   redraw
 
@@ -13,6 +21,8 @@ function! silver#Sup(cmd, args)
     nnoremap <buffer> <silent> q :q<cr>
     setlocal filetype=agresult
     setlocal buftype=nofile
+    set syntax=silver
+    setlocal nomodifiable
   else
 
     let l:grepargs = a:args . join(a:000, ' ')
@@ -33,6 +43,8 @@ function! silver#Sup(cmd, args)
     endif
 
     nnoremap <buffer> <silent> q :q<cr>
+    nnoremap <buffer> <silent> o :call silver#OpenFile()<cr>
+
     setlocal filetype=agresult
     setlocal buftype=nofile
     normal! ggdG
@@ -56,6 +68,7 @@ function! silver#Sup(cmd, args)
     let @/=a:args
     set hlsearch
     set syntax=silver
+    setlocal nomodifiable
     redraw!
 
   endif
