@@ -4,11 +4,18 @@ if !exists("g:ag_command")
   let g:ag_command = "ag"
 endif
 
-function! silver#OpenFile()
+function! silver#OpenFile(window)
   normal! 0"ayt:{j"by$
   normal q
-  echom type(@a)
-  execute ':e +' . @a . ' ' . @b
+  if ( a:window == 'horisontal' )
+    execute ':split +' . @a . ' ' . @b
+  elseif ( a:window == 'vertical' )
+    execute ':below vsplit +' . @a . ' ' . @b
+  elseif ( a:window == 'tab' )
+    execute ':tabe +' . @a . ' ' . @b
+  else
+    execute ':e +' . @a . ' ' . @b
+  endif
   return
 endfunction
 
@@ -22,7 +29,6 @@ function! silver#Sup(cmd, args)
     setlocal filetype=agresult
     setlocal buftype=nofile
     set syntax=silver
-    setlocal nomodifiable
   else
 
     let l:grepargs = a:args . join(a:000, ' ')
@@ -40,10 +46,15 @@ function! silver#Sup(cmd, args)
       execute winnr . "wincmd w"
     else
       split agresult
+      execute "resize " . (winheight(0) * 5/3)
     endif
 
+    nnoremap <buffer> <silent> <cr> :call silver#OpenFile('current')<cr>
+    nnoremap <buffer> <silent> o :call silver#OpenFile('current')<cr>
     nnoremap <buffer> <silent> q :q<cr>
-    nnoremap <buffer> <silent> o :call silver#OpenFile()<cr>
+    nnoremap <buffer> <silent> t :call silver#OpenFile('tab')<cr>
+    nnoremap <buffer> <silent> s :call silver#OpenFile('horisontal')<cr>
+    nnoremap <buffer> <silent> v :call silver#OpenFile('vertical')<cr>
 
     setlocal filetype=agresult
     setlocal buftype=nofile
@@ -68,9 +79,7 @@ function! silver#Sup(cmd, args)
     let @/=a:args
     set hlsearch
     set syntax=silver
-    setlocal nomodifiable
     redraw!
-
   endif
 
 endfunction
