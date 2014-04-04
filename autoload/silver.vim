@@ -16,7 +16,7 @@ function! silver#OpenFile(window)
     normal! {j"by$
     normal q
 
-    if (a:window == 'horisontal')
+    if (a:window == 'horizontal')
       execute ':split +' . @a . ' ' . @b
     elseif (a:window == 'vertical')
       execute ':below vsplit +' . @a . ' ' . @b
@@ -64,7 +64,7 @@ function! silver#Search(cmd, args)
       nnoremap <buffer> <silent> o :call silver#OpenFile('same')<cr>
       nnoremap <buffer> <silent> q :q<cr>
       nnoremap <buffer> <silent> t :call silver#OpenFile('tab')<cr>
-      nnoremap <buffer> <silent> s :call silver#OpenFile('horisontal')<cr>
+      nnoremap <buffer> <silent> s :call silver#OpenFile('horizontal')<cr>
       nnoremap <buffer> <silent> v :call silver#OpenFile('vertical')<cr>
     endif
 
