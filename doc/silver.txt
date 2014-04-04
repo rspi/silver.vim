@@ -1,12 +1,11 @@
 *silver.txt* wrapper plug-in for 'ag - The Silver Searcher'.
-
 >
-    ___ _ _             
-   / __(_) |_ _____ _ _ 
-   \__ \ | \ V / -_) '_|
-   |___/_|_|\_/\___|_| .vim
+                            ___ _ _             
+                           / __(_) |_ _____ _ _ 
+                           \__ \ | \ V / -_) '_|
+                           |___/_|_|\_/\___|_| .vim
 
-    -Reference Manual-
+                            -Reference Manual-
 <
                      
 Author: Rasmus Spiegelberg
@@ -20,7 +19,7 @@ This plug-in provides a simple wrapper around 'ag - The Silver Searcher'.
 ==============================================================================
 COMMANDS                                                      *silver-commands*
 
-                                                                   *silver-:SS*
+                                                                          *:SS*
 :SS [pattern]                 Search recursively in the current directory for 
                               the [pattern] and outputs result in a new
                               window buffer.
@@ -32,19 +31,20 @@ MAPPINGS                                                      *silver-mappings*
 The following maps, which work on the cursor line in the result window
 are provided:
 
-                              <cr> / o   open file in the last used window.
-                              t          open file in a new tab 
-                              s          open file in a horizontal split
-                              v          open file in a vertical split
-                              q          close the result window.
+      <cr> / o   open file in the last used window.
+      t          open file in a new tab 
+      s          open file in a horizontal split
+      v          open file in a vertical split
+      q          close the result window.
 
 ==============================================================================
 CONFIG                                                          *silver-config*
 
                                                                  *g:ag_command*
 The location of the Ag program, and any options you want passed to it before
-searching. Default: "ag". Example: >
-  let g:ag_command="ag --smart-case"
+searching. Default: "ag". Example: 
+>
+      let g:ag_command="ag --smart-case"
 <
 ==============================================================================
 COLORS                                                          *silver-colors*
@@ -52,5 +52,5 @@ COLORS                                                          *silver-colors*
 You can overwrite the highlight groups used by silver. The plugin defines
 these groups:
 
-                              silverLineNr  Line number in result.
-                              silverPath    File Path in result.
+      silverLineNr  Line number in result.
+      silverPath    File Path in result.
