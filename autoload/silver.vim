@@ -42,7 +42,7 @@ function! silver#Search(cmd, args)
   else
 
     let l:grepargs = a:args . join(a:000, ' ')
-    let output = system(g:ag_command . " -i " . "'" . l:grepargs . "'")
+    let output = system(g:ag_command . " '" . l:grepargs . "'")
 
     if empty(output)
       echom "No matches for '" . l:grepargs . "'"

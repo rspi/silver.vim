@@ -2,10 +2,10 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax match silver_linenr "\v^([0-9]+)"
-syntax match silver_path "^\(\d\+:\)\@!.*"
+syntax match silverLineNr "\v^([0-9]+)"
+syntax match silverPath "^\(\d\+:\)\@!.*"
 
-highlight link silver_linenr Number
-highlight link silver_path Identifier
+highlight def link silverLineNr Number
+highlight def link silverPath Identifier
 
 let b:current_syntax = "silver"

@@ -1,0 +1,8 @@
+g:ag_command	silver.txt	/*g:ag_command*
+silver	silver.txt	/*silver*
+silver-:SS	silver.txt	/*silver-:SS*
+silver-colors	silver.txt	/*silver-colors*
+silver-commands	silver.txt	/*silver-commands*
+silver-config	silver.txt	/*silver-config*
+silver-mappings	silver.txt	/*silver-mappings*
+silver.txt	silver.txt	/*silver.txt*
