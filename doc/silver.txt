@@ -22,7 +22,8 @@ COMMANDS                                                      *silver-commands*
                                                                           *:SS*
 :SS [pattern]                 Search recursively in the current directory for 
                               the [pattern] and outputs result in a new
-                              window buffer.
+                              window buffer. Calling :SS without a pattern
+                              opens the last result window buffer.
 
 
 ==============================================================================
