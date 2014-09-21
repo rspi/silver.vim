@@ -1,11 +1,11 @@
 # silver.vim #
 
-This plug-in is my version of a wrapper around [ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher), and my first attempt at vimscript.
-I really liked the output of the CLI version of [ag](https://github.com/ggreer/the_silver_searcher) and wanted the same inside vim.
+This plug-in is a vim _wrapper_ around [AG - The Silver Searcher](https://github.com/ggreer/the_silver_searcher).
+It looks and works quite similar to the search in Sublime Text.
 
 ## Installation ##
 
-You have to first install [ag](https://github.com/ggreer/the_silver_searcher) itself.
+You have to first install [AG](https://github.com/ggreer/the_silver_searcher) itself.
 Then install the plug-in as usual, using something like [Pathogen](https://github.com/tpope/vim-pathogen) or [Vundle](https://github.com/gmarik/vundle).
 
 ### Usage ###
